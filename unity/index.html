@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, {
+        type: "line",
+
+        data: {
+          labels: Array.from({ length: 16 }, (_, i) => i + 2007),
+          datasets: [
+            {
+              label: "필요하다",
+              data: [
+                64.1, 51.6, 56.4, 59.3, 53.8, 54, 54.9, 55.9, 52, 53.7, 54,
+                59.7, 53.6, 52.9, 44.6, 46,
+              ],
+              borderWidth: 3,
+              pointStyle: "rect",
+              pointRadius: 5,
+              backgroundColor: "rgba(62, 95, 255)",
+              pointBackgroundColor: "rgba(62, 95, 255)",
+              borderColor: "rgba(62, 95, 255)",
+            },
+            {
+              label: "반반/보통이다",
+              data: [
+                20.9, 23.2, 23.5, 20.4, 25.1, 21.6, 21.5, 22.6, 24.6, 22.5,
+                24.5, 24.2, 26.4, 22.4, 26, 27.9,
+              ],
+              borderWidth: 3,
+              pointStyle: "circle",
+              pointRadius: 5,
+              backgroundColor: "rgba(233, 75, 33)",
+              pointBackgroundColor: "rgba(233, 75, 33)",
+              borderColor: "rgba(233, 75, 33)",
+            },
+            {
+              label: "필요없다",
+              data: [
+                15, 25.2, 20.1, 20.4, 21.1, 21.4, 23.6, 21.6, 23.4, 23.8, 21.5,
+                16.1, 20, 24.7, 29.4, 26.1,
+              ],
+              borderWidth: 3,
+              pointStyle: "rectRot",
+              pointRadius: 5,
+              backgroundColor: "rgba(255, 0, 110)",
+              pointBackgroundColor: "rgba(255, 0, 110)",
+              borderColor: "rgba(255, 0, 110)",
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                color: "white",
+                autoSkip: false,
+                maxRotation: 90,
+                minRotation: 90,
+              },
+              grid: {
+                color: ["white"].concat(
+                  Array.from({ length: 16 }, (_, i) => "black")
+                ),
+              },
+            },
+            y: {
+              ticks: {
+                color: "#FFFFFF",
+              },
+              suggestedMax: 80,
+              suggestedMin: 10,
+              grid: {
+                color: ["white"].concat(
+                  Array.from({ length: 16 }, (_, i) => "#292929")
+                ),
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              position: "right",
+              labels: {
+                usePointStyle: true,
+                pointStyle: "line",
+                hidden: false,
+              },
+            },
+            title: {
+              display: true,
+              text: [
+                "통일 필요성",
+                "남북한 통일이 얼마나 필요하다고 생각하십니까",
+              ],
+              align: "start",
+              color: "white",
+              font: {
+                size: "24px",
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
